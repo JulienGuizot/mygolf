@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Score By Holes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @score_by_holes.each do |score_by_hole| %>
+      <tr>
+        <td><%= link_to 'Show', score_by_hole %></td>
+        <td><%= link_to 'Edit', edit_score_by_hole_path(score_by_hole) %></td>
+        <td><%= link_to 'Destroy', score_by_hole, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Score by hole', new_score_by_hole_path %>

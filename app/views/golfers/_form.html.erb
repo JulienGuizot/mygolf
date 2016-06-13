@@ -1,0 +1,17 @@
+<%= form_for(@golfer) do |f| %>
+  <% if @golfer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@golfer.errors.count, "error") %> prohibited this golfer from being saved:</h2>
+
+      <ul>
+      <% @golfer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
