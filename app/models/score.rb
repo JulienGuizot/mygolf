@@ -49,10 +49,5 @@ class Score < ActiveRecord::Base
   	current ## en faire une variable 
   end
 
-  def as_json(options={})
-    {:golfer      => self.golfer.as_json,
-     :score_by_holes  => self.score_by_holes.as_json,
-    }
-  end
 
 end

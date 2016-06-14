@@ -24,11 +24,5 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def as_json(options={})
-    {:current      => self.current,
-     :stage        => self.stage.as_json,
-     :scores       => self.scores.as_json,
- 	}
-  end
 
 end
