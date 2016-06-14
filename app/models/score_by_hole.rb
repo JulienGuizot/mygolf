@@ -11,7 +11,7 @@ class ScoreByHole < ActiveRecord::Base
 
   def points_by_hole
   	if hole_played?
-  		self.nb_shots - self.score.game.stage.holes[self.number].par
+  		self.nb_shots - self.score.game.stage.holes(self.number).par
   	else
   		nil
   	end
@@ -19,6 +19,14 @@ class ScoreByHole < ActiveRecord::Base
 
   def get_hole
   	self.score.game.stage.holes[self.number]
+  end
+
+  def as_json(options={})
+    {:id           => self.id,
+     :number      => self.number,
+     :nb_shots    => self.nb_shots,
+     :points      => self.points_by_hole
+    }
   end
 
 end

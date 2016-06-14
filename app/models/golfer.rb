@@ -16,12 +16,22 @@ class Golfer < ActiveRecord::Base
     }
    end
 
+   def total_score
+    total = 0 
+    self.score.score_by_holes.each do |s|
+      break if s.points_by_hole.nil?
+      total += s.points_by_hole
+    end
+    total
+   end
+
    def as_json(options={})
     {:id           => self.id,
      :name      => self.name,
      :sexe        => self.sexe,
      :handicap       => self.handicap,
-     :score_by_holes => self.score_by_holes.as_json
+     :score_by_holes => self.score_by_holes.as_json,
+     :total_score => total_score
     }
   end
 
