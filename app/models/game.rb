@@ -17,7 +17,11 @@ class Game < ActiveRecord::Base
   end
 
   def is_finish?
-    !self.scores.first.score_by_holes.last.nb_shots.blank?
+    if !self.scores.first.nil?
+      !self.scores.first.score_by_holes.last.nb_shots.blank?
+    else
+      false
+    end
   end
 
   def as_json(options={})

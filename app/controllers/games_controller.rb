@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all.select { |g| !g.is_finish? }
+    @games = Game.all.select { |g| g.is_finish? }
     @games = @games.sort_by{|g| g.id }
 
     respond_to do |format|
