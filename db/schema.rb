@@ -11,43 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612105503) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "games", force: :cascade do |t|
-  	t.boolean "current", :null => true
-  	t.integer "stage_id", :null => true, :references => [:stages, :id]
-  end
-
-  create_table "golfers", force: :cascade do |t|  
-    t.string "name"
-    t.string "sexe"
-    t.integer "handicap"
-    t.integer "score_id", :null => true, :references => [:scores, :id]
-  end
-
-  create_table "holes", force: :cascade do |t|
-    t.integer "number"
-    t.float "distance_m"
-    t.float "distance_w"
-    t.integer "par"
-    t.integer "stage_id", :null => true, :references => [:stages, :id]
-  end
-
-  create_table "scores", force: :cascade do |t|
-    t.integer "game_id", :null => true, :references => [:games, :id]
-  end
-
-  create_table "score_by_holes", force: :cascade do |t|
-    t.integer "nb_shots"
-    t.integer "number"
-    t.integer "score_id", :null => true, :references => [:scores, :id]
-  end
-
-  create_table "stages", force: :cascade do |t|
-    t.string "title"
-    t.string "country"
-    t.string "city"
-    t.integer "holes_count"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
 end
