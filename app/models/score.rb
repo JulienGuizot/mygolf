@@ -5,14 +5,6 @@ class Score < ActiveRecord::Base
 
   belongs_to :game, foreign_key: "game_id"
 
-  after_create :initialize_score_by_holes
-
-  def initialize_score_by_holes
-  	(0..self.game.stage.holes_count-1).each do |i|
-  		num = i + 1
-  		self.score_by_holes.create(number: num)
-  	end
-  end
 
   def has_golfer?
   	self.golfer.present? && !self.golfer.blank?

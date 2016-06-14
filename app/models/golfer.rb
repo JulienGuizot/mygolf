@@ -9,6 +9,16 @@ class Golfer < ActiveRecord::Base
 
   belongs_to :score, foreign_key: "score_id"
 
+  after_create :initialize_score_by_holes
+
+  def initialize_score_by_holes
+    (0..self.game.stage.holes_count-1).each do |i|
+      num = i + 1
+      self.score_by_holes.create(number: num)
+    end
+  end
+
+
    def self.type_sexe_golfer
     {
         'M' => 'Man',
