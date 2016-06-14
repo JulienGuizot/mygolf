@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612105503) do
+ActiveRecord::Schema.define(version: 0) do
 
-  create_table "games", force: :cascade do |t|
-  	t.boolean "current", :null => true
-  	t.integer "stage_id", :null => true, :references => [:stages, :id]
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+   create_table "games", force: :cascade do |t|
+    t.boolean "current", :null => true
+    t.integer "stage_id", :null => true, :references => [:stages, :id]
   end
 
   create_table "golfers", force: :cascade do |t|  
