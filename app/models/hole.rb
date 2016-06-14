@@ -7,5 +7,13 @@ class Hole < ActiveRecord::Base
 
   belongs_to :stage, foreign_key: "stage_id"
 
+  def as_json(options={})
+    {:id           => self.id,
+     :number      => self.number,
+     :distance_m        => self.distance_m,
+     :distance_w       => self.distance_w,
+     :par => self.par
+    }
+  end
 
 end

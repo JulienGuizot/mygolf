@@ -13,5 +13,12 @@ class Golfer < ActiveRecord::Base
     }
    end
 
+   def as_json(options={})
+    {:id           => self.id,
+     :name      => self.name,
+     :sexe        => self.sexe,
+     :handicap       => self.handicap
+    }
+  end
 
 end

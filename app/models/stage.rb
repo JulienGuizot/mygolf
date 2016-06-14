@@ -20,4 +20,14 @@ class Stage < ActiveRecord::Base
   	end
   end
 
+  def as_json(options={})
+    {:id           => self.id,
+     :title      => self.title,
+     :country        => self.country,
+     :city       => self.city,
+     :holes_count => self.holes_count,
+     :holes => self.holes.as_json
+    }
+  end
+
 end
