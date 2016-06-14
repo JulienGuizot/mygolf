@@ -4,6 +4,9 @@ class Golfer < ActiveRecord::Base
   #attr_accessor :sexe, :string
   #attr_accessor :handicap, :integer
 
+  has_many :score_by_holes, :dependent => :destroy
+  accepts_nested_attributes_for :score_by_holes, :allow_destroy => true
+
   belongs_to :score, foreign_key: "score_id"
 
    def self.type_sexe_golfer
@@ -17,7 +20,8 @@ class Golfer < ActiveRecord::Base
     {:id           => self.id,
      :name      => self.name,
      :sexe        => self.sexe,
-     :handicap       => self.handicap
+     :handicap       => self.handicap,
+     :score_by_holes => self.score_by_holes.as_json
     }
   end
 

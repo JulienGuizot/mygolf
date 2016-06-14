@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "score_by_holes", force: :cascade do |t|
     t.integer "nb_shots"
     t.integer "number"
-    t.integer "score_id", :null => true, :references => [:scores, :id]
+    t.integer "golfer_id", :null => true, :references => [:golfer, :id]
   end
 
   create_table "stages", force: :cascade do |t|

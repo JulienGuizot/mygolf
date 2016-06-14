@@ -1,9 +1,5 @@
 class Score < ActiveRecord::Base
   
-
-  has_many :score_by_holes, :dependent => :destroy
-  accepts_nested_attributes_for :score_by_holes, :allow_destroy => true
-
   has_one :golfer
   accepts_nested_attributes_for :golfer, :allow_destroy => true
 
@@ -52,7 +48,6 @@ class Score < ActiveRecord::Base
   def as_json(options={})
     {:id           => self.id,
      :golfer      => self.golfer.as_json,
-     :score_by_holes  => self.score_by_holes.as_json,
     }
   end
 
