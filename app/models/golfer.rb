@@ -12,7 +12,7 @@ class Golfer < ActiveRecord::Base
   after_create :initialize_score_by_holes
 
   def initialize_score_by_holes
-    (0..self.game.stage.holes_count-1).each do |i|
+    (0..self.score.game.stage.holes_count-1).each do |i|
       num = i + 1
       self.score_by_holes.create(number: num)
     end
