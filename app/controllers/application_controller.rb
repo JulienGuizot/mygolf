@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   def current_game
   	@games = Game.all
   	@current_game = @games.select{|g| g.current }.first
-  	@current_game.stage = @stage
   	@current_game.save
   	respond_to do |format|
       if !@current_game.blank?
