@@ -1,6 +1,25 @@
 class StagesController < ApplicationController
   before_action :set_stage, only: [:show, :edit, :update, :destroy]
 
+  before_filter :cors_preflight_check
+  after_filter :cors_set_access_control_headers
+
+  def cors_set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization'
+  end
+
+  def cors_preflight_check
+    if request.method == 'OPTIONS'
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
+
+      render :json => '{}', :content_type => 'application/json'
+    end
+  end
+
   # GET /stages
   # GET /stages.json
   def index
