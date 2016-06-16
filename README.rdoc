@@ -1,28 +1,20 @@
-== README
+== Les différentes requêtes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+requêtes GET :
 
-Things you may want to cover:
+* baseUrl + /current-game : récupère la partie en cours de jeu
 
-* Ruby version
+* baseUrl + /stages : récupère la liste des parcours de golf
 
-* System dependencies
+* baseUrl + /games : récupére la liste des 5 dernières parties jouées et terminées
 
-* Configuration
+* baseUrl + /games/{:id}/endgame : termine la partie
 
-* Database creation
+* baseUrl + /games/1 : récupère les données d'une partie.
 
-* Database initialization
+requêtes POST : 
 
-* How to run the test suite
+* baseUrl + /games/new : créer une nouvelle partie et donnes les données de la partie en réponse.
 
-* Services (job queues, cache servers, search engines, etc.)
+* baseUrl + /games/{:id}/edit : met à jour les données d'une partie pour stocker les scores de chaque joueur.
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
